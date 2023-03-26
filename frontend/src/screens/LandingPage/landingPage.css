@@ -1,0 +1,72 @@
+.main {
+  min-height: 93vh;
+  display: flex;
+  align-items: center;
+  background-image: url("../../assets/CyberNoteBackground2.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+/* .title {
+  font-size: 70px;
+}
+.subtitle {
+  font-size: 25px;
+  padding-top: 10px;
+} */
+.intro-text {
+  width: 100%;
+  text-align: center;
+}
+
+.buttonContainer {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.landingbutton {
+  width: 150px;
+  height: 50px;
+}
+
+@media only screen and (min-width: 1200px) {
+  .title {
+    font-size: 70px;
+  }
+  .subtitle {
+    font-size: 25px;
+    padding-top: 10px;
+  }
+  .buttonContainer {
+    padding: 0 300px;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .title {
+    font-size: 40px;
+  }
+  .subtitle {
+    font-size: 20px;
+    padding-top: 10px;
+  }
+  .landingbutton {
+    width: 100px;
+    height: 50px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .title {
+    font-size: 30px;
+  }
+  .subtitle {
+    font-size: 20px;
+    padding-top: 10px;
+  }
+  .landingbutton {
+    width: 100px;
+    height: 50px;
+  }
+}

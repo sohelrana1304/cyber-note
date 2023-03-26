@@ -1,0 +1,9 @@
+.loginContainer{
+    display: flex;
+    flex-direction: column;
+    margin: 50px;
+}
+
+.btn{
+    margin: 20px 0;
+}
