@@ -1,7 +1,7 @@
 import "./landingPage.css";
 import { Button, Container, Row } from "react-bootstrap";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const LandingPage = () => {
 
@@ -25,12 +25,12 @@ const LandingPage = () => {
               <p className="subtitle">Keep your note safe</p>
             </div>
             <div className="buttonContainer">
-              <a href="/login">
+              <Link to="/login">
                 <Button size="lg" className="landingbutton">
                   Login
                 </Button>
-              </a>
-              <a href="/register">
+              </Link>
+              <Link to="/register">
                 <Button
                   size="lg"
                   className="landingbutton"
@@ -38,7 +38,7 @@ const LandingPage = () => {
                 >
                   Sign up
                 </Button>
-              </a>
+              </Link>
             </div>
           </div>
         </Row>
