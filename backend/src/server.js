@@ -11,9 +11,9 @@ app.use(cors());
 connectDB();
 app.use(express.json());
 
-// app.get("/", (req, res) => {
-//   res.send("Helo from server");
-// });
+app.get("/test", (req, res) => {
+  res.send("Helo from server");
+});
 
 app.use("/api/user", userRouter);
 app.use("/api/note", noteRouter);
