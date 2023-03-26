@@ -11,6 +11,7 @@ import {
   USER_UPDATE_REQUEST,
   USER_UPDATE_SUCCESS,
 } from "../constants/userConstants";
+import { BaseURL } from "../helper/BaseURL";
 
 export const login = (email, password) => async (dispatch) => {
   try {
@@ -23,7 +24,7 @@ export const login = (email, password) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      "http://localhost:5000/api/user/login",
+      `${BaseURL}/api/user/login`,
       { email, password },
       config
     );
@@ -59,11 +60,10 @@ export const register = (name, email, password) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      "http://localhost:5000/api/user/register",
+      `${BaseURL}/api/user/register`,
       { name, email, password },
       config
     );
-    console.log(data)
 
     dispatch({ type: USER_REGISTER_SUCCESS, payload: data });
     dispatch({ type: USER_LOGIN_SUCCESS, payload: data });
@@ -80,7 +80,6 @@ export const register = (name, email, password) => async (dispatch) => {
   }
 };
 
-
 export const updateProfile = (user) => async (dispatch, getState) => {
   try {
     dispatch({ type: USER_UPDATE_REQUEST });
@@ -96,7 +95,11 @@ export const updateProfile = (user) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.put("http://localhost:5000/api/user/profile", user, config);
+    const { data } = await axios.put(
+      `${BaseURL}/api/user/profile`,
+      user,
+      config
+    );
 
     dispatch({ type: USER_UPDATE_SUCCESS, payload: data });
 

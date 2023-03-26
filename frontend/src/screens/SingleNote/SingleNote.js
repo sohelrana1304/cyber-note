@@ -1,13 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Button, Card, Form } from "react-bootstrap";
-import ReactMarkdown from 'react-markdown'
+import ReactMarkdown from "react-markdown";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { deleteNoteAction, updateNoteAction } from "../../actions/notesActions";
 import ErrorMessage from "../../components/ErrorMessage";
 import Loading from "../../components/Loading";
 import MainScreen from "../../components/MainScreen";
+import { BaseURL } from "../../helper/BaseURL";
 
 const SingleNote = () => {
   const [title, setTitle] = useState();
@@ -31,9 +32,9 @@ const SingleNote = () => {
 
   const deleteHandler = (id) => {
     if (window.confirm("Are you sure?")) {
-      dispatch(deleteNoteAction(id))
+      dispatch(deleteNoteAction(id));
     }
-    navigate("/mynotes")
+    navigate("/mynotes");
   };
 
   const location = useLocation();
@@ -41,7 +42,7 @@ const SingleNote = () => {
 
   useEffect(() => {
     const fetching = async () => {
-      const { data } = await axios.get(`http://localhost:5000/api/note/${id}`);
+      const { data } = await axios.get(`${BaseURL}/api/note/${id}`);
 
       setTitle(data.message.title);
       setContent(data.message.content);
@@ -73,9 +74,11 @@ const SingleNote = () => {
         <Card.Header>Edit your note</Card.Header>
         <Card.Body>
           <Form onSubmit={updateHandler}>
-            {loadingDelete && <Loading/>}
+            {loadingDelete && <Loading />}
             {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
-            {errorDelete && <ErrorMessage variant="danger">{errorDelete}</ErrorMessage>}
+            {errorDelete && (
+              <ErrorMessage variant="danger">{errorDelete}</ErrorMessage>
+            )}
             <Form.Group controlId="title">
               <Form.Label>Title</Form.Label>
               <Form.Control
@@ -122,7 +125,7 @@ const SingleNote = () => {
             </Button>
             <Button
               className="mx-2"
-                onClick={() => deleteHandler(id)}
+              onClick={() => deleteHandler(id)}
               variant="danger"
             >
               Delete Note

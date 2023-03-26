@@ -13,6 +13,7 @@ import {
   NOTES_UPDATE_REQUEST,
   NOTES_UPDATE_SUCCESS,
 } from "../constants/noteConstants";
+import { BaseURL } from "../helper/BaseURL";
 
 export const listNotes = () => async (dispatch, getState) => {
   try {
@@ -30,7 +31,7 @@ export const listNotes = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get(`http://localhost:5000/api/note`, config);
+    const { data } = await axios.get(`${BaseURL}/api/note`, config);
 
     dispatch({
       type: NOTES_LIST_SUCCESS,
@@ -66,7 +67,7 @@ export const createNoteAction =
       };
 
       const { data } = await axios.post(
-        `http://localhost:5000/api/note/createNote`,
+        `${BaseURL}/api/note/createNote`,
         { title, content, category },
         config
       );
@@ -106,7 +107,7 @@ export const updateNoteAction =
       };
 
       const { data } = await axios.put(
-        `http://localhost:5000/api/note/updateNote/${id}`,
+        `${BaseURL}/api/note/updateNote/${id}`,
         { title, content, category },
         config
       );
@@ -144,7 +145,7 @@ export const deleteNoteAction = (id) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.delete(
-      `http://localhost:5000/api/note/deleteNote/${id}`,
+      `${BaseURL}/api/note/deleteNote/${id}`,
       config
     );
 
