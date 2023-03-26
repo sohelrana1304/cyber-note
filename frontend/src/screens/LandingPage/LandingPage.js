@@ -1,7 +1,8 @@
 import "./landingPage.css";
 import { Button, Container, Row } from "react-bootstrap";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { BaseURL } from "../../helper/BaseURL";
 
 const LandingPage = () => {
 
@@ -25,11 +26,13 @@ const LandingPage = () => {
               <p className="subtitle">Keep your note safe</p>
             </div>
             <div className="buttonContainer">
-              <a href="/login">
+              {/* <a href="/login"> */}
+              <Link to={`${BaseURL}/login`}>
                 <Button size="lg" className="landingbutton">
                   Login
                 </Button>
-              </a>
+              </Link>
+              {/* </a> */}
               <a href="/register">
                 <Button
                   size="lg"
